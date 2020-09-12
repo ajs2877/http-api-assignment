@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <title>Our simple HTTP server</title>
-  <link rel="stylesheet" type="text/css" href="/client/style.css">
+  <link rel="stylesheet" type="text/css" href="/style.css">
   
   <script>
      const handleResponse = (xhr) => {
@@ -33,7 +33,7 @@
       }
 
       //contentType check from https://stackoverflow.com/a/37121496
-      const contentType = response.headers.get("content-type");
+      const contentType = xhr.response.headers.get("content-type");
       if (contentType && contentType.indexOf("application/json") !== -1) {
         const obj = JSON.parse(xhr.response);
         content.innerHTML += `<p>${obj.message}</p>`;
