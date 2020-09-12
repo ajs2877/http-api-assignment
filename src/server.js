@@ -9,6 +9,7 @@ const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
 const urlJSONStruct = {
   '/': htmlHandler.getIndex,
+  '/style.css': htmlHandler.getCSS,
   '/success': jsonHandler.success,
   '/badRequest': jsonHandler.badRequest,
   '/unauthorized': jsonHandler.unauthorized,
@@ -19,6 +20,7 @@ const urlJSONStruct = {
 };
 const urlXMLStruct = {
   '/': htmlHandler.getIndex,
+  '/style.css': htmlHandler.getCSS,
   '/success': xmlHandler.success,
   '/badRequest': xmlHandler.badRequest,
   '/unauthorized': xmlHandler.unauthorized,

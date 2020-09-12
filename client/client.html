@@ -33,7 +33,7 @@
       }
 
       //contentType check from https://stackoverflow.com/a/37121496
-      const contentType = xhr.headers.get("content-type");
+      const contentType = xhr.getResponseHeader('content-type');
       if (contentType && contentType.indexOf("application/json") !== -1) {
         const obj = JSON.parse(xhr.response);
         content.innerHTML += `<p>${obj.message}</p>`;
