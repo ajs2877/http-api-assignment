@@ -28,13 +28,13 @@ const badRequest = (request, response, params) => {
 
 const unauthorized = (request, response, params) => {
   const responseJSON = {
-    message: 'You are authorized to access this page',
+    message: 'You have successfully viewed the content',
   };
 
   if (!params.loggedIn || params.loggedIn !== 'yes') {
-    responseJSON.message = 'You are not authorized to access this page';
+    responseJSON.message = 'Missing loggedIn query parameter set equal to yes';
     responseJSON.id = 'unauthorized';
-    return respondJSON(request, response, 400, responseJSON);
+    return respondJSON(request, response, 401, responseJSON);
   }
 
   return respondJSON(request, response, 200, responseJSON);
@@ -42,7 +42,7 @@ const unauthorized = (request, response, params) => {
 
 const forbidden = (request, response) => {
   const responseJSON = {
-    message: 'Permission denied to access page',
+    message: 'You do not have access to this content',
     id: 'forbidden',
   };
 
@@ -60,7 +60,7 @@ const internal = (request, response) => {
 
 const notImplemented = (request, response) => {
   const responseJSON = {
-    message: 'Error not implemented. Please report to page owner.',
+    message: 'A get request has not been implemented yet. Please check back later for content.',
     id: 'notimplemented',
   };
 

@@ -31,22 +31,22 @@ const badRequest = (request, response, params) => {
 const unauthorized = (request, response, params) => {
   if (!params.loggedIn || params.loggedIn !== 'yes') {
     let responseXML = '<response>';
-    responseXML = `${responseXML} <message>${'You are not authorized to access this page'}</message>`;
+    responseXML = `${responseXML} <message>${'Missing loggedIn query parameter set equal to yes'}</message>`;
     responseXML = `${responseXML} <id>${'unauthorized'}</id>`;
     responseXML = `${responseXML} </response>`;
 
-    return respondXML(request, response, 400, responseXML);
+    return respondXML(request, response, 401, responseXML);
   }
 
   let responseXML = '<response>';
-  responseXML = `${responseXML} <message>${'You are authorized to access this page'}</message>`;
+  responseXML = `${responseXML} <message>${'You have successfully viewed the content'}</message>`;
   responseXML = `${responseXML} </response>`;
   return respondXML(request, response, 200, responseXML);
 };
 
 const forbidden = (request, response) => {
   let responseXML = '<response>';
-  responseXML = `${responseXML} <message>${'Permission denied to access page'}</message>`;
+  responseXML = `${responseXML} <message>${'You do not have access to this content'}</message>`;
   responseXML = `${responseXML} <id>${'forbidden'}</id>`;
   responseXML = `${responseXML} </response>`;
 
@@ -64,7 +64,7 @@ const internal = (request, response) => {
 
 const notImplemented = (request, response) => {
   let responseXML = '<response>';
-  responseXML = `${responseXML} <message>${'Error not implemented. Please report to page owner.'}</message>`;
+  responseXML = `${responseXML} <message>${'A get request has not been implemented yet. Please check back later for content.'}</message>`;
   responseXML = `${responseXML} <id>${'notimplemented'}</id>`;
   responseXML = `${responseXML} </response>`;
 
@@ -74,7 +74,7 @@ const notImplemented = (request, response) => {
 const notFound = (request, response) => {
   let responseXML = '<response>';
   responseXML = `${responseXML} <message>${'The page you are looking for was not found.'}</message>`;
-  responseXML = `${responseXML} <id>${'notimplemented'}</id>`;
+  responseXML = `${responseXML} <id>${'notfound'}</id>`;
   responseXML = `${responseXML} </notFound>`;
 
   return respondXML(request, response, 404, responseXML);

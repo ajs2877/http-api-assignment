@@ -34,7 +34,6 @@ const onRequest = (request, response) => {
   const parsedUrl = url.parse(request.url);
   const acceptedTypes = request.headers.accept.split(',');
   const params = query.parse(parsedUrl.query);
-  console.log(params);
 
   if (acceptedTypes[0] === 'text/xml') {
     if (urlXMLStruct[parsedUrl.pathname]) {
