@@ -36,7 +36,8 @@
       const contentType = xhr.getResponseHeader('content-type');
       if (contentType && contentType.indexOf("application/json") !== -1) {
         const obj = JSON.parse(xhr.response);
-        content.innerHTML += `<p>${obj}</p>`;
+        console.log(obj);
+        content.innerHTML += `<p>${obj.message}</p>`;
       }
 
       //must be xml
